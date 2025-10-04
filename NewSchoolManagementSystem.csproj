@@ -146,6 +146,9 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentLoginController.cs" />
     <Compile Include="Controllers\TeachersLoginController.cs" />
+    <Compile Include="DAL\AdminLogin_DAL.cs" />
+    <Compile Include="DAL\StudentLogin_DAL.cs" />
+    <Compile Include="DAL\TeachersLogin_DAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +179,7 @@
     <Compile Include="Models\DataModel\tbl_Teachers.cs">
       <DependentUpon>SchoolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,8 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Models\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
