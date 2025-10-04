@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School ERP - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+            .login-container h2 {
+                margin-bottom: 20px;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 12px;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+                font-size: 1rem;
+            }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            background: #f59e0b;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .login-btn:hover {
+                background: #fbbf24;
+                transform: translateY(-3px);
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+
+        .extra-links {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+            .extra-links a {
+                color: #e0e7ff;
+                text-decoration: none;
+            }
+
+                .extra-links a:hover {
+                    text-decoration: underline;
+                }
+
+        media (max-width: 768px) {
+            .login-container
+
+        {
+            padding: 30px;
+        }
+
+        .login-container h2 {
+            font-size: 1.6rem;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Student Login</h2>
+        <h2>Under Maintance</h2>
+    </div>
+</body>
+</html>

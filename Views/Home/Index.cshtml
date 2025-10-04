@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+
+        .admin-btn {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+            .admin-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        .welcome-text {
+            margin-bottom: 40px;
+        }
+
+            .welcome-text h1 {
+                font-size: 3.5rem;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+
+            .welcome-text p {
+                font-size: 1.2rem;
+                color: #e0e7ff;
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dashboard-btn {
+            background: #f59e0b;
+            padding: 15px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .dashboard-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+                background: #fbbf24;
+            }
+
+        media (max-width: 768px) {
+            .welcome-text h1
+
+        {
+            font-size: 2.5rem;
+        }
+
+        .welcome-text p {
+            font-size: 1rem;
+        }
+
+        .dashboard-btn {
+            padding: 12px 30px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/Login/Index" class="admin-btn">
+                <span>Admin Login</span>
+            </a>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-text">
+                <h1>Welcome to Smart School</h1>
+                <p>Empowering education through innovative management solutions</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/StudentLogin/Index" class="dashboard-btn">
+                    Students Login
+                </a>
+                <a href="/TeachersLogin/Index" class="dashboard-btn">
+                    Teachers Login
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
