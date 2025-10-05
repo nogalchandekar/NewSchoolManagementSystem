@@ -29,6 +29,7 @@ namespace NewSchoolManagementSystem.Models.DataModel
     
         public virtual DbSet<tbl_Standards> tbl_Standards { get; set; }
         public virtual DbSet<tbl_Teachers> tbl_Teachers { get; set; }
+        public virtual DbSet<tbl_Admin> tbl_Admin { get; set; }
     
         public virtual ObjectResult<SP_GetallStandards_Result> SP_GetallStandards()
         {

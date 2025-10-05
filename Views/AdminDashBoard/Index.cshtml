@@ -110,6 +110,22 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    @if (TempData["LoginSuccess"] != null)
+    {
+        <text>
+        Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: '@TempData["LoginSuccess"]',
+            showConfirmButton: false,
+            timer: 2000
+        });
+        </text>
+    }
+</script>
+
 <!-- Custom CSS -->
 <style>
     .hover-card {

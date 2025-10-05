@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="School_Management_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="School_Management_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_Standards">
           <Key>
             <PropertyRef Name="StandardsId" />
@@ -37,14 +37,23 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <Function Name="SP_GetallStandards" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetallTeachersRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="School_Management_SystemModelStoreContainer">
           <EntitySet Name="tbl_Standards" EntityType="Self.tbl_Standards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Teachers" EntityType="Self.tbl_Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="SchoolManagement" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="School_Management_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -85,6 +94,7 @@
           <EntitySet Name="tbl_Teachers" EntityType="Self.tbl_Teachers" />
           <FunctionImport Name="SP_GetallStandards" ReturnType="Collection(School_Management_SystemModel.SP_GetallStandards_Result)" />
           <FunctionImport Name="SP_GetallTeachersRecords" ReturnType="Collection(School_Management_SystemModel.SP_GetallTeachersRecords_Result)" />
+          <EntitySet Name="tbl_Admin" EntityType="School_Management_SystemModel.tbl_Admin" />
         </EntityContainer>
         <ComplexType Name="SP_GetallStandards_Result">
           <Property Type="Int32" Name="StandardsId" Nullable="false" />
@@ -105,6 +115,15 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="tbl_Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -172,6 +191,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_Admin">
+            <EntityTypeMapping TypeName="School_Management_SystemModel.tbl_Admin">
+              <MappingFragment StoreEntitySet="tbl_Admin">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
