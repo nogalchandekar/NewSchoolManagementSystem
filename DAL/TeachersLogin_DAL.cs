@@ -7,6 +7,6 @@ namespace NewSchoolManagementSystem.DAL
 {
 	public class TeachersLogin_DAL
 	{
-
+						    
 	}
 }

@@ -5,10 +5,8 @@
 }
 
 
+<!-- ✅ Teacher Master Form (Updated & Mobile Responsive) -->
 <style>
-
-
-    /* General Reset and Base Styles */
     * {
         margin: 0;
         padding: 0;
@@ -16,13 +14,12 @@
     }
 
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: 'Inter', sans-serif;
         background-color: #f5f7fa;
         color: #333;
         line-height: 1.6;
     }
 
-    /* Container and Layout */
     .designationform {
         padding: 20px;
         max-width: 1400px;
@@ -46,7 +43,6 @@
             color: #1a3c6d;
         }
 
-    /* Button Styles */
     .btn-primary {
         background-color: #1a73e8;
         border: none;
@@ -62,12 +58,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-primary i {
-            font-size: 1.1rem;
-            vertical-align: middle;
-        }
-
-    /* Modal Styling */
     .modal-content {
         border-radius: 12px;
         border: none;
@@ -87,14 +77,10 @@
         color: #1a3c6d;
     }
 
-    .modal-body {
-        padding: 20px;
-    }
-
     .form-label {
         font-weight: 500;
         color: #444;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
 
     .form-control, .form-select {
@@ -111,274 +97,62 @@
             outline: none;
         }
 
-        .form-control.bg-light.bg-opacity-50,
-        .form-select.bg-light.bg-opacity-50 {
-            background-color: rgba(248, 249, 250, 0.5);
-        }
-
     .invalid-feedback {
         font-size: 0.85rem;
         color: #dc3545;
     }
 
-    /* Table Styling */
-    .card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-        margin-top: 20px;
-    }
-
-    .card-header {
-        background-color: #fff;
-        padding: 15px 20px;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .table {
-        margin-bottom: 0;
-        font-size: 0.95rem;
-    }
-
-        .table th {
-            font-weight: 600;
-            color: #1a3c6d;
-            padding: 12px 15px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .table td {
-            padding: 12px 15px;
-            vertical-align: middle;
-        }
-
-    .table-hover tbody tr:hover {
-        background-color: #f1f3f5;
-        transition: background-color 0.2s ease;
-    }
-
-    .table-responsive {
-        border-radius: 8px;
-        overflow-x: auto;
-    }
-
-    /* Action Buttons in Table */
-    .btn-update, .btn-delete {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-    }
-
-    .btn-update {
-        background-color: #28a745;
-        color: #fff;
-    }
-
-        .btn-update:hover {
-            background-color: #218838;
-        }
-
-    .btn-delete {
-        background-color: #dc3545;
-        color: #fff;
-    }
-
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
-
-    /* Responsive Design */
     media (max-width: 768px) {
         .master-lines
 
     {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
-    }
-
-    .modal-dialog {
-        margin: 10px;
-    }
-
-    .form-label {
-        font-size: 0.9rem;
+        gap: 10px;
     }
 
     .btn-primary {
         width: 100%;
-        padding: 12px;
     }
-
-    .table th, .table td {
-        font-size: 0.85rem;
-        padding: 10px;
-    }
-
-    }
-
-    media (max-width: 576px) {
-        .modal-lg
-
-    {
-        max-width: 100%;
-    }
-
-    .row > div {
-        margin-bottom: 15px;
-    }
-
-    .table-responsive {
-        font-size: 0.8rem;
-    }
-
-    .table th, .table td {
-        padding: 8px;
-    }
-
-    }
-
-    /* Accessibility Enhancements */
-    :focus-visible {
-        outline: 2px solid #1a73e8;
-        outline-offset: 2px;
-    }
-
-    button, input, select, textarea {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
     }
 </style>
 
-
-<div class="px-0 designationform">
+<div class="designationform">
     <div class="container-fluid">
         <div class="master-lines">
             <h4 class="mb-0">Teacher Master</h4>
-            <div class="text-end mb-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teacherModal">
-                    <i class="bi bi-plus-circle me-2"></i>Add Teacher
-                </button>
-            </div>
+            <button type="button" class="btn btn-primary" id="btnAddTeacher">
+                <i class="bi bi-plus-circle me-2"></i>Add Teacher
+            </button>
         </div>
 
-        <!-- Teacher Modal -->
-        <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="teacherModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="teacherModalLabel">Add / Edit Teacher</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Teacher Input Form with required fields -->
-                        <form id="teacherForm" class="needs-validation" novalidate>
-                            <input type="hidden" id="hdnteacher" />
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="firstName">First Name <span class="text-danger">*</span></label>
-                                    <input type="text" id="firstName" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter First Name" required>
-                                    <input type="hidden" id="hdnteachersid" />
-                                    <div class="invalid-feedback">First Name is required.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="lastName">Last Name <span class="text-danger">*</span></label>
-                                    <input type="text" id="lastName" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter Last Name" required>
-                                    <div class="invalid-feedback">Last Name is required.</div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
-                                    <input type="email" id="email" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter Email" required>
-                                    <div class="invalid-feedback">Valid Email is required.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="phone">Phone Number <span class="text-danger">*</span></label>
-                                    <input type="tel" id="phone" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter Phone Number" required>
-                                    <div class="invalid-feedback">Phone Number is required.</div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="subject">Subject Taught <span class="text-danger">*</span></label>
-                                    <input type="text" id="subject" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter Subject (e.g., Mathematics)" required>
-                                    <div class="invalid-feedback">Subject is required.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="qualification">Qualification <span class="text-danger">*</span></label>
-                                    <input type="text" id="qualification" class="form-control bg-light bg-opacity-50 border-light py-2" placeholder="Enter Qualification (e.g., M.Sc.)" required>
-                                    <div class="invalid-feedback">Qualification is required.</div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="hireDate">Hire Date <span class="text-danger">*</span></label>
-                                    <input type="date" id="hireDate" class="form-control bg-light bg-opacity-50 border-light py-2" required>
-                                    <div class="invalid-feedback">Hire Date is required.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="department">Department</label>
-                                    <select id="department" class="form-select bg-light bg-opacity-50 border-light py-2">
-                                        <option value="">Select Department</option>
-                                        <option value="Science">Science</option>
-                                        <option value="Mathematics">Mathematics</option>
-                                        <option value="Humanities">Humanities</option>
-                                        <option value="Languages">Languages</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="address">Address</label>
-                                    <textarea id="address" class="form-control bg-light bg-opacity-50 border-light py-2" rows="3" placeholder="Enter Address"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="text-center d-grid mt-3">
-                                <button class="btn btn-primary py-2 fw-medium" type="submit" id="btnSubmit"><i class="bi bi-save me-2"></i>Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-<div class="row">
+<!-- ✅ Teacher List Table -->
+<div class="row mt-4">
     <div class="col-xl-12">
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <!-- Optional: Add search or filters here if needed -->
-            </div>
             <div class="card-body p-4">
                 <div class="table-responsive">
                     <table class="table align-middle text-nowrap table-hover table-centered mb-0" id="tblteacher">
                         <thead class="bg-light-subtle">
                             <tr>
-                                <th style="width: 10%;">Sr No</th>
-                                <th style="width: 50%;">First Name</th>
-                                <th style="width: 50%;">Last Name</th>
-                                <th style="width: 50%;">Email</th>
-                                <th style="width: 50%;">Mobile No</th>
-                                <th style="width: 10%; text-align: center;">Update</th>
-                                <th style="width: 10%; text-align: center;">Delete</th>
+                                <th>Sr No</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>DOB</th>
+                                <th>Mobile</th>
+                                <th>Qualification</th>
+                                <th>Join Date</th>
+                                <th class="text-center">Update</th>
+                                <th class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody id="tblteacherbody"></tbody>
                     </table>
                 </div>
-                <!-- end table-responsive -->
             </div>
         </div>
     </div>
@@ -386,8 +160,22 @@
 
 
 
+
+
+
+
 <script src="~/Scripts/jquery-3.7.0.js"></script>
 @*<script src="~/Areas/Admin/Scripts/Teachers.js"></script>*@
+
+<script>
+    document.getElementById("btnAddTeacher").addEventListener("click", function () {
+        // Redirect to the teacher registration page
+        window.location.href = "/Teachers/RegristrationForm";
+    });
+</script>
+
+
+
 
 <!-- Add Bootstrap validation script -->
 <script>

@@ -23,18 +23,30 @@
             <PropertyRef Name="TeachersId" />
           </Key>
           <Property Name="TeachersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="SubjectTaught" Type="nvarchar" MaxLength="255" />
-          <Property Name="Qualification" Type="nvarchar" MaxLength="255" />
-          <Property Name="HireDate" Type="date" />
-          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="30" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="MartialStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="AlternativeMobileNo" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="250" />
+          <Property Name="Specification" Type="nvarchar" MaxLength="250" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Joiningdate" Type="date" />
+          <Property Name="Department" Type="nvarchar" MaxLength="250" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="250" />
+          <Property Name="Salary" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="250" />
           <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="250" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="tbl_Admin">
@@ -70,31 +82,12 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_Teachers">
-          <Key>
-            <PropertyRef Name="TeachersId" />
-          </Key>
-          <Property Name="TeachersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SubjectTaught" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Qualification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="HireDate" Type="DateTime" Precision="0" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityContainer Name="School_Management_SystemEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_Standards" EntityType="Self.tbl_Standards" />
-          <EntitySet Name="tbl_Teachers" EntityType="Self.tbl_Teachers" />
           <FunctionImport Name="SP_GetallStandards" ReturnType="Collection(School_Management_SystemModel.SP_GetallStandards_Result)" />
           <FunctionImport Name="SP_GetallTeachersRecords" ReturnType="Collection(School_Management_SystemModel.SP_GetallTeachersRecords_Result)" />
           <EntitySet Name="tbl_Admin" EntityType="School_Management_SystemModel.tbl_Admin" />
+          <EntitySet Name="tbl_Teachers" EntityType="School_Management_SystemModel.tbl_Teachers" />
         </EntityContainer>
         <ComplexType Name="SP_GetallStandards_Result">
           <Property Type="Int32" Name="StandardsId" Nullable="false" />
@@ -124,6 +117,37 @@
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tbl_Teachers">
+          <Key>
+            <PropertyRef Name="TeachersId" />
+          </Key>
+          <Property Name="TeachersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="MartialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="AlternativeMobileNo" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Specification" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Joiningdate" Type="DateTime" Precision="0" />
+          <Property Name="Department" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -141,26 +165,6 @@
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="Section" ColumnName="Section" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Teachers">
-            <EntityTypeMapping TypeName="School_Management_SystemModel.tbl_Teachers">
-              <MappingFragment StoreEntitySet="tbl_Teachers">
-                <ScalarProperty Name="TeachersId" ColumnName="TeachersId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="SubjectTaught" ColumnName="SubjectTaught" />
-                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
-                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -198,6 +202,38 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Teachers">
+            <EntityTypeMapping TypeName="School_Management_SystemModel.tbl_Teachers">
+              <MappingFragment StoreEntitySet="tbl_Teachers">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Joiningdate" ColumnName="Joiningdate" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Specification" ColumnName="Specification" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="AlternativeMobileNo" ColumnName="AlternativeMobileNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="TeachersId" ColumnName="TeachersId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

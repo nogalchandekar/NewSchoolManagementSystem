@@ -16,8 +16,27 @@ namespace NewSchoolManagementSystem.Controllers
         AdminLogin_DAL admin = new AdminLogin_DAL();
 
 		// GET: Login
+		[HttpGet]
+		public ActionResult Index()
+		{
+			// Clear old messages when the page loads
+			TempData["Message"] = null;
+			return View();
+		}
+
+		// POST: Login
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Index(VMtblAdmin vmtblAdminrequest)
 		{
+			// Server-side validation
+			if (string.IsNullOrWhiteSpace(vmtblAdminrequest.UserName) ||
+				string.IsNullOrWhiteSpace(vmtblAdminrequest.Password))
+			{
+				TempData["Message"] = "Please enter Username and Password.";
+				return View(vmtblAdminrequest);
+			}
+
 			VMtblAdmin loginresponse = admin.CheckAdminLogin(vmtblAdminrequest);
 			if (loginresponse != null && loginresponse.IsLoginSuccess)
 			{
@@ -25,8 +44,9 @@ namespace NewSchoolManagementSystem.Controllers
 				TempData["LoginSuccess"] = "Welcome, " + loginresponse.UserName + "!";
 				return RedirectToAction("Index", "AdminDashboard");
 			}
+
 			TempData["Message"] = "Incorrect Username or Password.";
-			return View();
+			return View(vmtblAdminrequest);
 		}
 
 		private void AddSession(VMtblAdmin vmtblAdminrequest)
@@ -35,6 +55,7 @@ namespace NewSchoolManagementSystem.Controllers
 			Session["UserID"] = vmtblAdminrequest.AdminId;
 			Session.Timeout = 30; // 30 minutes
 		}
+
 
 
 	}

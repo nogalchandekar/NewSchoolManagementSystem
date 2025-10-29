@@ -18,233 +18,10 @@
 
     <!-- DataTable CSS -->
     <link href="~/Content/Admin/assets/css/dataTables.min.css" rel="stylesheet" />
-
+    <link href="~/Content/CSS/Layout.css" rel="stylesheet" />
     <style>
         /* ===== GLOBAL STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            color: #2c3e50;
-            min-height: 100vh;
-        }
-
-        /* ===== NAVBAR STYLES ===== */
-        .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1050;
-            padding: 0.8rem 1rem;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #fff !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .navbar-brand i {
-            font-size: 1.5rem;
-        }
-
-        .navbar-toggler {
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 0.75rem;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.3);
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar .nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff !important;
-        }
-
-        /* ===== SIDEBAR STYLES ===== */
-        .sidebar {
-            background: #fff;
-            border-right: 1px solid #e3e6f0;
-            height: calc(100vh - 66px);
-            position: fixed;
-            top: 66px;
-            left: 0;
-            width: 260px;
-            padding-top: 1.5rem;
-            overflow-y: auto;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 1040;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .sidebar.hidden {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-
-        .sidebar .nav-link {
-            color: #5a6c7d;
-            padding: 0.9rem 1.5rem;
-            border-radius: 8px;
-            margin: 0.3rem 1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .sidebar .nav-link i {
-            margin-right: 12px;
-            font-size: 1.3em;
-            width: 24px;
-            text-align: center;
-        }
-
-        .sidebar .nav-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            transform: translateX(5px);
-        }
-
-        .sidebar .nav-link.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff !important;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
-        /* ===== MAIN CONTENT STYLES ===== */
-        .main-content {
-            margin-left: 260px;
-            margin-top: 66px;
-            padding: 2rem;
-            min-height: calc(100vh - 66px);
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.expanded {
-            margin-left: 0;
-        }
-
-        /* ===== FOOTER STYLES ===== */
-        .footer {
-            background: #fff;
-            border-top: 1px solid #e3e6f0;
-            padding: 1.2rem;
-            text-align: center;
-            margin-left: 260px;
-            color: #6c757d;
-            font-size: 0.9rem;
-            transition: margin-left 0.3s ease;
-        }
-
-        .footer.expanded {
-            margin-left: 0;
-        }
-
-        /* ===== OVERLAY FOR MOBILE ===== */
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1039;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .sidebar-overlay.show {
-            display: block;
-            opacity: 1;
-        }
-
-        /* ===== SCROLLBAR STYLES ===== */
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 3px;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
-        }
-
-        /* ===== RESPONSIVE STYLES ===== */
-        media (max-width: 991px) {
-            .sidebar {
-                transform: translateX(-100%);
-                opacity: 0;
-                z-index: 1050;
-            }
-
-            .sidebar.show {
-                transform: translateX(0);
-                opacity: 1;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .footer {
-                margin-left: 0;
-            }
-
-            .navbar .collapse {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 8px;
-                margin-top: 1rem;
-                padding: 1rem;
-            }
-        }
-
-        media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1.1rem;
-            }
-
-            .main-content {
-                padding: 1rem;
-            }
-
-            .sidebar {
-                width: 280px;
-            }
-        }
+      
     </style>
 </head>
 <body>
@@ -252,11 +29,15 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <a class="navbar-brand" href="/">
                 <i class="bi bi-mortarboard-fill"></i>
-                School Management
+                <span class="d-none d-sm-inline">School Management</span>
+                <span class="d-inline d-sm-none">SMS</span>
             </a>
-            <button class="navbar-toggler" type="button" id="sidebarToggle">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -293,7 +74,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="~/Admin/Student/Index">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-people-fill"></i> Students
                 </a>
             </li>
@@ -303,27 +84,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Attendance">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-check-square-fill"></i> Attendance
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Grades">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-journal-bookmark-fill"></i> Grades
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Timetable">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-calendar-week-fill"></i> Timetable
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Reports">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-bar-chart-fill"></i> Reports
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Settings">
+                <a class="nav-link" href="~/SiteMaintance/Index">
                     <i class="bi bi-gear-fill"></i> Settings
                 </a>
             </li>
@@ -344,6 +125,9 @@
         </p>
     </footer>
 
+    <!-- jQuery (if needed for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -361,41 +145,90 @@
         const footer = document.getElementById('footer');
 
         function toggleSidebar() {
-            sidebar.classList.toggle('show');
-            sidebarOverlay.classList.toggle('show');
+            const isMobile = window.innerWidth <= 991;
 
-            if (window.innerWidth > 991) {
+            if (isMobile) {
+                // Mobile behavior - slide in/out with overlay
+                sidebar.classList.toggle('show');
+                sidebarOverlay.classList.toggle('show');
+
+                // Prevent body scroll when sidebar is open
+                if (sidebar.classList.contains('show')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            } else {
+                // Desktop behavior - hide/show sidebar
                 sidebar.classList.toggle('hidden');
                 mainContent.classList.toggle('expanded');
                 footer.classList.toggle('expanded');
             }
         }
 
-        sidebarToggle.addEventListener('click', toggleSidebar);
+        // Toggle sidebar on button click
+        sidebarToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleSidebar();
+        });
 
+        // Close sidebar when clicking overlay (mobile only)
         sidebarOverlay.addEventListener('click', function () {
             sidebar.classList.remove('show');
             sidebarOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // Close sidebar when clicking a link on mobile
+        const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 991) {
+                    sidebar.classList.remove('show');
+                    sidebarOverlay.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
         });
 
         // Handle window resize
         window.addEventListener('resize', function () {
-            if (window.innerWidth > 991) {
+            const isMobile = window.innerWidth <= 991;
+
+            if (isMobile) {
+                // Reset to mobile state
                 sidebarOverlay.classList.remove('show');
+                sidebar.classList.remove('show');
+                mainContent.classList.remove('expanded');
+                footer.classList.remove('expanded');
+                document.body.style.overflow = '';
+            } else {
+                // Reset to desktop state
+                sidebar.classList.remove('show');
+                sidebarOverlay.classList.remove('show');
+                document.body.style.overflow = '';
             }
         });
 
         // Set active link based on current URL
         document.addEventListener('DOMContentLoaded', function () {
-            const currentPath = window.location.pathname;
+            const currentPath = window.location.pathname.toLowerCase();
             const navLinks = document.querySelectorAll('.sidebar .nav-link');
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
+                const linkPath = link.getAttribute('href');
+
+                if (linkPath && currentPath.includes(linkPath.toLowerCase())) {
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Prevent sidebar from closing when clicking inside it
+        sidebar.addEventListener('click', function (e) {
+            e.stopPropagation();
         });
     </script>
 </body>
